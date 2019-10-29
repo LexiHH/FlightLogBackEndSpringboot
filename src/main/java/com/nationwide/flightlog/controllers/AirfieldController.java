@@ -19,14 +19,13 @@ import com.nationwide.flightlog.repos.AirfieldRepo;
 import com.nationwide.flightlog.repos.FlightRepo;
 import com.nationwide.flightlog.services.AirfieldService;
 
-@CrossOrigin(origins = "http://35.246.15.79")
+@CrossOrigin(origins = {"http://localhost:3000", "http://35.246.15.79"})
 @RestController
 public class AirfieldController {
 	
 	@Autowired
 	private AirfieldService service;
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("/showAllAirfield")
 	public ArrayList<Airfield> showAll() {
 		return service.showAll();
@@ -51,8 +50,7 @@ public class AirfieldController {
 	public ArrayList<Airfield> findBetween(@PathVariable Float X, @PathVariable Float Y) {
 		return service.findBetween(X, Y);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@PostMapping("saveAirfield/{Pic}/{Des}/{Tip}/{Pro}/{Con}/{Fee}")
 	public String saveWithoutID(
 			@PathVariable String Pic, 
@@ -63,14 +61,12 @@ public class AirfieldController {
 			@PathVariable float Fee) {
 		return service.saveWithoutID(Pic, Des, Tip, Pro, Con, Fee);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@DeleteMapping("/deleteAirfield/{ID}")
 	public String deleteAirfield(@PathVariable int ID) {
 		return service.deleteAirfield(ID);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@PutMapping("/changeAirfield/{Id}/{Pic}/{Des}/{Tips}/{Pros}/{Cons}/{Landingfee}")
 	public String changeAirfield(@PathVariable int Id,
 			@PathVariable String Pic, 
