@@ -17,20 +17,18 @@ import com.nationwide.flightlog.data.Flight;
 import com.nationwide.flightlog.repos.FlightRepo;
 import com.nationwide.flightlog.services.FlightService;
 
-
+@CrossOrigin(origins = {"http://localhost:3000", "http://35.246.15.79"})
 @RestController
 public class FlightController {
 	
 	@Autowired
 	private FlightService service;
 	
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/showAllFlight")
 	public ArrayList<Flight> showall() {
 		return service.showall();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/filterFlightId/{R}")
 	public Flight showId(@PathVariable int R) {
 		return service.showId(R);
@@ -50,8 +48,7 @@ public class FlightController {
 	public ArrayList<Flight>showPassengers(@PathVariable int R) {
 		return service.showPassengers(R);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("/filterAirfield/{R}")
 	public ArrayList<Flight> showAirfield(@PathVariable String R) {
 		return service.showAirfield(R);
@@ -61,8 +58,7 @@ public class FlightController {
 	public ArrayList<Flight> showCallsign(@PathVariable String C) {
 		return service.showCallsign(C);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@PostMapping("/saveFlight/{Pic}/{Des}/{Time}/{Dt}/{Pass}/{Air}/{Cal}/{Land}/{Sol}")
 	public String saveWithoutID(
 			@PathVariable String Pic, 
@@ -76,8 +72,7 @@ public class FlightController {
 			@PathVariable String Sol) {
 		return service.saveWithoutID(Pic, Des, Time, Dt, Pass, Air, Cal, Land, Sol);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@DeleteMapping("/deleteFlight/{ID}")
 	public String deleteFlight(@PathVariable int ID) {
 		return service.deleteFlight(ID);
@@ -87,8 +82,7 @@ public class FlightController {
 	public int sumAllLandings() {
 		return service.sumAllLandings();
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("/sumAllLandingsDates/{D1}/{D2}")
 	public int sumAllLandingsDates(@PathVariable Date D1, @PathVariable Date D2) {
 		return service.sumAllLandingsDates(D1, D2);
@@ -103,8 +97,7 @@ public class FlightController {
 	public String sumAllFlighttimeSolo(@PathVariable String S) {
 		return service.sumAllFlighttimeSolo(S);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("/sumAllFlighttimeSoloDates/{S}/{D1}/{D2}")
 	public String sumAllFlighttimeSoloDates(@PathVariable String S, @PathVariable Date D1, @PathVariable Date D2) {
 		return service.sumAllFlighttimeSoloDates(S, D1, D2);
@@ -114,14 +107,12 @@ public class FlightController {
 	public String sumAllFlighttimeCallsign(@PathVariable String C) {
 		return service.sumAllFlighttimeCallsign(C);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@GetMapping("/sumFlighttimeBetween/{D1}/{D2}")
 	public String sumFlighttimeBetween(@PathVariable Date D1, @PathVariable Date D2) {
 		return service.sumFlighttimeDates(D1, D2);
 	}
-	
-	@CrossOrigin(origins = "http://localhost:3000")
+
 	@PutMapping("/changeFlight/{Id}/{Pic}/{Des}/{Time}/{Dt}/{Pass}/{Air}/{Cal}/{Land}/{Sol}")
 	public String changeFlight(@PathVariable int Id,
 			@PathVariable String Pic, 
