@@ -30,6 +30,7 @@ public class FlightController {
 		return service.showall();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/filterFlightId/{R}")
 	public Flight showId(@PathVariable int R) {
 		return service.showId(R);
