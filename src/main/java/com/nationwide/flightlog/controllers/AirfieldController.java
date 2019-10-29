@@ -19,7 +19,7 @@ import com.nationwide.flightlog.repos.AirfieldRepo;
 import com.nationwide.flightlog.repos.FlightRepo;
 import com.nationwide.flightlog.services.AirfieldService;
 
-
+@CrossOrigin(origins = "http://35.246.15.79")
 @RestController
 public class AirfieldController {
 	
