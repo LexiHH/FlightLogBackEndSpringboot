@@ -97,9 +97,12 @@ public class FlightService {
 			int all = repo.sumAllFlighttimeSoloDates(S, D1, D2);
 			int hours = all/60;
 			int mins = all%60;
+			if(hours == 0 && mins == 0) {
+				return("No flight time");
+			}
 			return (hours + " hours and " + mins + " mins");
 			}
-			return "Must be 'Solo' or 'Dual'";
+		return "Must be 'Solo' or 'Dual'";
 	}
 	
 	public String sumAllFlighttimeCallsign(String C) {
