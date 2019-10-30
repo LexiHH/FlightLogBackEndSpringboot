@@ -93,16 +93,18 @@ public class FlightService {
 	}
 	
 	public String sumAllFlighttimeSoloDates(String S, Date D1, Date D2) {
+		try {
 		if(S.contentEquals("Solo") || S.contentEquals("Dual")) {
 			int all = repo.sumAllFlighttimeSoloDates(S, D1, D2);
 			int hours = all/60;
 			int mins = all%60;
-			if(all == 0) {
-				return("No flight time");
-			}
 			return (hours + " hours and " + mins + " mins");
 			}
 			return "Must be 'Solo' or 'Dual'";
+		}
+		catch(Exception e) {
+			return("No available flight time");
+		}
 	}
 	
 	public String sumAllFlighttimeCallsign(String C) {
